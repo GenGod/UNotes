@@ -29,17 +29,18 @@ class NoteActivity : AppCompatActivity() {
         this._cancelButton = findViewById(R.id.activity_note_cancel_button)
         this._removeButton = findViewById(R.id.activity_note_remove_button)
 
-        if (intent != null && intent.extras != null) {
-            this._note.copy(Gson().fromJson<Note>(intent.extras.get("note_data").toString(), Note::class.java))
-            this._noteTitle.setText(this._note.title)
-            this._noteDescription.setText(this._note.description)
+        val args = intent?.extras?.get("note_data")
+        if (args != null) {
+                this._note.copy(Gson().fromJson(args.toString(), Note::class.java))
+                this._noteTitle.setText(this._note.title)
+                this._noteDescription.setText(this._note.description)
         } else {
             this._noteTitle.setText("")
             this._noteDescription.setText("")
         }
 
         this._saveButton.setOnClickListener {
-            var intent = intent
+            val intent = intent
             var resultCode = 0
             if (this._note.title == "" && this._note.description == "") {
                 resultCode = 1
@@ -57,7 +58,7 @@ class NoteActivity : AppCompatActivity() {
         }
 
         this._removeButton.setOnClickListener {
-            var intent = intent
+            val intent = intent
             intent.putExtra("id", this._note.id)
             setResult(3, intent)
             finish()

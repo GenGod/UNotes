@@ -1,18 +1,19 @@
 package es.esy.gengod.ubernotes
 
-import org.junit.Assert
 import org.junit.Test
+import com.google.common.truth.Truth.assertThat
+import java.util.*
 
 class UtilsTest {
 
     @Test
     fun canSerializeEmptyNotes() {
-        Assert.assertEquals(serializeNotes(ArrayList()), "")
+        assertThat(serializeNotes(ArrayList())).isEqualTo("")
     }
 
     @Test
     fun canDeserializeEmptyNote() {
-        Assert.assertEquals(deserializeNotes(""), ArrayList<Note>())
+        assertThat(deserializeNotes("")).isEqualTo(ArrayList<Note>())
     }
 
 }

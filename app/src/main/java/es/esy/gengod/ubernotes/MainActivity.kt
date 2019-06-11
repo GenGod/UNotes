@@ -38,11 +38,6 @@ class MainActivity : AppCompatActivity() {
         this._createNewNoteButton.setOnClickListener {
             this.openNote(Note())
         }
-
-        for (i in 0 until this._listView.childCount) {
-            val view = this._listView.getChildAt(i)
-            Log.i("view.transitionName", view.transitionName)
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
