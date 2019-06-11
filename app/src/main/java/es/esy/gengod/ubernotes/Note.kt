@@ -32,7 +32,7 @@ class Note {
         }
     }
 
-    constructor() {
+    init {
         this.title = ""
         this.description = ""
         this.modifiedOn = Date()
@@ -56,5 +56,33 @@ class Note {
         this.title = note.title
         this.description = note.description
         this.modifiedOn = note.modifiedOn
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return when {
+            other == null -> false
+            other::class.java != Note::class.java -> false
+            (other as Note).title != this.title -> false
+            other.description != this.description -> false
+            other.id != this.id -> false
+            else -> true
+        }
+    }
+
+    override fun hashCode(): Int {
+        var hash = id.toInt()
+        for (i in title.toByteArray()) {
+            hash += i
+        }
+        for (i in description.toByteArray()) {
+            hash += i
+        }
+        hash += modifiedOn.time.toInt()
+
+        return hash
+    }
+
+    override fun toString(): String {
+        return "$id: $title - $description at $modifiedOn"
     }
 }

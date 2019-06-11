@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var _listView: GridLayout
     private lateinit var _createNewNoteButton: Button
     private val FILE_NAME = "NotesStore.txt"
+    private val LOGS_FILE = "Logs.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +40,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         for (i in 0 until this._listView.childCount) {
-            var view = this._listView.getChildAt(i)
+            val view = this._listView.getChildAt(i)
             Log.i("view.transitionName", view.transitionName)
         }
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     private fun initializeNotes() {
         val errorTag = "initializeNotes Error"
         try {
-            var inFile = applicationContext.openFileInput(this.FILE_NAME)
+            val inFile = applicationContext.openFileInput(this.FILE_NAME)
             try {
                 val serializedString = String(inFile.readBytes())
                 Log.w("initializeNotes()", serializedString)
@@ -110,11 +110,13 @@ class MainActivity : AppCompatActivity() {
     private fun updateNotesOnDisk() {
         val errorTag = "updateNotesOnDisk Error"
         try {
-            var file = applicationContext.openFileOutput(this.FILE_NAME, Context.MODE_PRIVATE)
+            val file = applicationContext.openFileOutput(this.FILE_NAME, Context.MODE_PRIVATE)
             val serializedString = serializeNotes(this._notes)
             Log.w("updateNotesOnDisk", serializedString)
             try {
-                file.write(serializedString.toByteArray())
+                file.bufferedWriter().use {
+                    it.write(serializedString)
+                }
             } finally {
                 file.close()
             }
@@ -135,8 +137,8 @@ class MainActivity : AppCompatActivity() {
         this._notes.sortByDescending {it.modifiedOn}
         for (note in this._notes) {
             val view = layoutInflater.inflate(R.layout.note_item, this._listView, false)
-            var noteTitle = view.findViewById<TextView>(R.id.note_title)
-            var noteDescription = view.findViewById<TextView>(R.id.note_description)
+            val noteTitle = view.findViewById<TextView>(R.id.note_title)
+            val noteDescription = view.findViewById<TextView>(R.id.note_description)
             noteTitle.text = note.title
             var description = note.description
 

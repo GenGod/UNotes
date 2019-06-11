@@ -13,6 +13,9 @@ import com.google.gson.reflect.TypeToken
  * @return JSON string
  */
 fun serializeNotes(notes: ArrayList<Note>): String {
+    if (notes.size == 0) {
+        return ""
+    }
     return Gson().toJson(notes, object : TypeToken<ArrayList<Note>>() {}.type)
 }
 
@@ -22,5 +25,8 @@ fun serializeNotes(notes: ArrayList<Note>): String {
  * @return ArrayList of notes
  */
 fun deserializeNotes(serializedString: String): ArrayList<Note> {
+    if (serializedString == "") {
+        return ArrayList()
+    }
     return Gson().fromJson(serializedString, object : TypeToken<ArrayList<Note>>() {}.type)
 }
