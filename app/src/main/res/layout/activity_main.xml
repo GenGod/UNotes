@@ -15,16 +15,37 @@
             android:columnCount="3"
             android:orientation="vertical">
     </GridLayout>
+    <!--com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            style="@style/Widget.MaterialComponents.BottomNavigationView">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView-->
     <GridLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-        <Button android:id="@+id/activity_main_create_new_note_button"
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/activity_main_create_new_note_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create new"/>
-        <Button android:id="@+id/activity_main_remove_note_button"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/create_new_button_title"/>
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/activity_main_remove_note_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/remove_button_title"/>
+                android:text="@string/remove_button_title"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_row="0"
+                android:layout_column="1"/>
     </GridLayout>
 
 </LinearLayout>

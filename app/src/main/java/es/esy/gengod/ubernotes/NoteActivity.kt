@@ -5,9 +5,9 @@
 package es.esy.gengod.ubernotes
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 
 class NoteActivity : AppCompatActivity() {

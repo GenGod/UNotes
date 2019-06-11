@@ -6,11 +6,12 @@ package es.esy.gengod.ubernotes
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import java.io.*
 import java.lang.Exception
@@ -22,8 +23,11 @@ class MainActivity : AppCompatActivity() {
     private var _notesToDelete: ArrayList<View> = ArrayList()
     private lateinit var _listView: GridLayout
     private lateinit var _createNewNoteButton: Button
-    private val FILE_NAME = "NotesStore.txt"
-    private val LOGS_FILE = "Logs.txt"
+
+    companion object {
+        const val FILENAME = "NotesStore.txt"
+        const val LOGSFILE = "Logs.txt"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                 }.run()
             }
         }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onRestart() {
@@ -76,19 +81,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menu = menuInflater.inflate(R.menu.main, menu)
+        return true
+    }*/
+
     /**
      * Reads notes from internal storage
      */
     private fun initializeNotes() {
         val errorTag = "initializeNotes Error"
         try {
-            val inFile = applicationContext.openFileInput(this.FILE_NAME)
-            try {
-                val serializedString = String(inFile.readBytes())
+            val inFile = applicationContext.openFileInput(FILENAME)
+            inFile.use {
+                val serializedString = String(it.readBytes())
                 Log.w("initializeNotes()", serializedString)
                 this._notes = deserializeNotes(serializedString)
-            } finally {
-                inFile.close()
             }
         } catch (exception: FileNotFoundException) {
             Log.e(errorTag, exception.message)
@@ -105,15 +113,13 @@ class MainActivity : AppCompatActivity() {
     private fun updateNotesOnDisk() {
         val errorTag = "updateNotesOnDisk Error"
         try {
-            val file = applicationContext.openFileOutput(this.FILE_NAME, Context.MODE_PRIVATE)
+            val file = applicationContext.openFileOutput(FILENAME, Context.MODE_PRIVATE)
             val serializedString = serializeNotes(this._notes)
             Log.w("updateNotesOnDisk", serializedString)
-            try {
-                file.bufferedWriter().use {
+            file.use { outFile ->
+                outFile.bufferedWriter().use {
                     it.write(serializedString)
                 }
-            } finally {
-                file.close()
             }
         } catch (exception: FileNotFoundException) {
             Log.e(errorTag, exception.message)
