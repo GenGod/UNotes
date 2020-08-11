@@ -15,7 +15,6 @@ import java.util.*
  * @constructor Creates an empty Note with generated id
  */
 class Note {
-
     var title: String
     var description: String
     var modifiedOn: Date

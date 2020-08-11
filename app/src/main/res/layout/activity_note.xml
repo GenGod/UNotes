@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".NoteActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        tools:context=".NoteActivity">
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.9"
+            android:layout_weight="93"
             android:orientation="vertical">
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="?inputBackground"
+                android:background="@android:color/transparent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/activity_note_title"
                     android:inputType="text|textMultiLine|textCapSentences"
@@ -23,8 +26,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+                app:boxBackgroundColor="@android:color/transparent"
+                android:background="@android:color/transparent"
                 android:layout_width="match_parent"
-                android:layout_height="623dp"
+                android:layout_height="wrap_content"
                 android:textSize="18sp">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/activity_note_description"
@@ -36,38 +41,40 @@
     </LinearLayout>
     <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="7">
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/activity_note_save_button"
                 android:text="@string/save_button_title"
+                android:layout_columnWeight="0.3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginStart="3dp"
                 android:textAlignment="center"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="center_horizontal"/>
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/activity_note_cancel_button"
                 android:text="@string/cancel_button_title"
+                android:layout_columnWeight="0.3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginStart="10dp"
                 android:textAlignment="center"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="center_horizontal"/>
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/activity_note_remove_button"
                 android:text="@string/remove_button_title"
+                android:layout_columnWeight="0.3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_marginStart="10dp"
                 android:textAlignment="center"
-                android:layout_gravity="bottom"/>
-
+                android:layout_gravity="center_horizontal"/>
     </GridLayout>
-
 </LinearLayout>

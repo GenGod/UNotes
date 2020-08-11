@@ -47,6 +47,9 @@ class NoteActivity : AppCompatActivity() {
             }
             this._note.title = this._noteTitle.text.toString()
             this._note.description = this._noteDescription.text.toString()
+            if (this._note.title == "" && this._note.description == "") {
+                resultCode = 4
+            }
             intent.putExtra("note_data", Gson().toJson(this._note, Note::class.java))
             setResult(resultCode, intent)
             finish()

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">UberNotes</string>
-    <string name="save_button_title">Save note</string>
-    <string name="cancel_button_title">Revert changes</string>
-    <string name="remove_button_title">Remove note</string>
+    <string name="app_name">UberNotes</string>
+    <string name="save_button_title">Save</string>
+    <string name="cancel_button_title">Revert</string>
+    <string name="remove_button_title">Remove</string>
     <string name="create_new_button_title">Create note</string>
 </resources>
