@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
         this._listView = findViewById(R.id.notes_list)
@@ -79,11 +80,6 @@ class MainActivity : AppCompatActivity() {
             this._notesToDelete.clear()
         }
     }
-
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menu = menuInflater.inflate(R.menu.main, menu)
-        return true
-    }*/
 
     /**
      * Reads notes from internal storage

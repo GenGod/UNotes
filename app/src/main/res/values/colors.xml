@@ -3,6 +3,7 @@
     <!-- Colors for Main theme -->
     <color name="colorPrimaryMain">#03A9F4</color>
     <color name="inputBackgroundMain">#D8F3FF</color>
+    <color name="inputBackgroundDarkMain">#292A2B</color>
     <color name="colorPrimaryDarkMain">#3F51B5</color>
     <color name="colorAccentMain">#AAEFF8</color>
 

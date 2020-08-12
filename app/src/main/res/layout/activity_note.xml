@@ -14,7 +14,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="?inputBackground"
+                app:boxBackgroundColor="@android:color/transparent"
                 android:background="@android:color/transparent">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/activity_note_title"
