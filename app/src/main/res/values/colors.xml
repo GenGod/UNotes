@@ -3,15 +3,25 @@
     <!-- Colors for Main theme -->
     <color name="colorPrimaryMain">#03A9F4</color>
     <color name="inputBackgroundMain">#D8F3FF</color>
-    <color name="inputBackgroundDarkMain">#292A2B</color>
-    <color name="colorPrimaryDarkMain">#3F51B5</color>
     <color name="colorAccentMain">#AAEFF8</color>
     <color name="colorPlaceholder">#919191</color>
+
+    <!-- Colors for Dark theme -->
+    <color name="colorPrimaryMainDark">#047CB1</color>
+    <color name="inputBackgroundMainDark">#748F9B</color>
+    <color name="colorAccentMainDark">#267D88</color>
+    <color name="colorPlaceholderDark">#2D2D2D</color>
 
     <!-- Colors for Red theme -->
     <color name="colorPrimaryRed">#F46303</color>
     <color name="inputBackgroundRed">#FFD8D8</color>
-    <color name="colorPrimaryDarkRed">#B53F3F</color>
     <color name="colorAccentRed">#F8B3AA</color>
     <color name="colorPlaceholderRed">#919191</color>
+
+    <!-- Colors for Dark Red theme -->
+    <color name="colorPrimaryRedDark">#7A3000</color>
+    <color name="inputBackgroundRedDark">#7F6C6C</color>
+    <color name="colorAccentRedDark">#B35955</color>
+    <color name="colorPlaceholderRedDark">#4D4D4D</color>
+
 </resources>

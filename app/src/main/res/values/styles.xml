@@ -4,7 +4,6 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryMain</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkMain</item>
         <item name="colorAccent">@color/colorAccentMain</item>
         <item name="inputBackground">@color/inputBackgroundMain</item>
         <item name="placeHolder">@color/colorPlaceholder</item>
@@ -13,7 +12,6 @@
     <style name="RedTheme" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryRed</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
         <item name="colorAccent">@color/colorAccentRed</item>
         <item name="inputBackground">@color/inputBackgroundRed</item>
         <item name="placeHolder">@color/colorPlaceholderRed</item>

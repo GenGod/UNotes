@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryMainDark</item>
+        <item name="colorAccent">@color/colorAccentMainDark</item>
+        <item name="inputBackground">@color/inputBackgroundMainDark</item>
+        <item name="placeHolder">@color/colorPlaceholderDark</item>
+    </style>
+
+    <style name="RedTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryRedDark</item>
+        <item name="colorAccent">@color/colorAccentRedDark</item>
+        <item name="inputBackground">@color/inputBackgroundRedDark</item>
+        <item name="placeHolder">@color/colorPlaceholderRedDark</item>
+    </style>
+
+</resources>
