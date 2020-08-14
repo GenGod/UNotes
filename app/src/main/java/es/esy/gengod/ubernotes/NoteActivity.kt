@@ -21,6 +21,7 @@ class NoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_note)
 
         this._noteTitle = findViewById(R.id.activity_note_title)

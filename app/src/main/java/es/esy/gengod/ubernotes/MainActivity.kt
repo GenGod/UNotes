@@ -19,9 +19,10 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
 
     private var _notes: ArrayList<Note> = ArrayList()
-    private var _notesToDelete: ArrayList<View> = ArrayList()
+    private var _notesToDelete: ArrayList<Note> = ArrayList()
     private lateinit var _listView: GridLayout
     private lateinit var _createNewNoteButton: Button
+    private lateinit var _removeSelectedNotesButton: Button
 
     companion object {
         const val FILENAME = "NotesStore.txt"
@@ -35,12 +36,17 @@ class MainActivity : AppCompatActivity() {
 
         this._listView = findViewById(R.id.notes_list)
         this._createNewNoteButton = findViewById(R.id.activity_main_create_new_note_button)
+        this._removeSelectedNotesButton = findViewById(R.id.activity_main_remove_selected_notes_button)
 
         initializeNotes()
         showGridLayout()
 
         this._createNewNoteButton.setOnClickListener {
             this.openNote(Note())
+        }
+
+        this._removeSelectedNotesButton.setOnClickListener {
+            this.removeSelectedNotes()
         }
     }
 
@@ -58,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                     this.updateNotesOnDisk()
                 }.run()
             } else if (resultCode == 3) {
-                this.removeNote(Gson().fromJson(data.extras?.get("id").toString(), Long::class.java))
+                this.removeNote(Gson().fromJson(data.extras?.get("id").toString(), Int::class.java))
                 Runnable {
                     this.updateNotesOnDisk()
                 }.run()
@@ -131,33 +137,59 @@ class MainActivity : AppCompatActivity() {
     private fun showGridLayout() {
         val layoutInflater = layoutInflater
         this._notes.sortByDescending {it.modifiedOn}
-        for (note in this._notes) {
-            val view = layoutInflater.inflate(R.layout.note_item, this._listView, false)
-            val noteTitle = view.findViewById<TextView>(R.id.note_title)
-            val noteDescription = view.findViewById<TextView>(R.id.note_description)
-            noteTitle.text = note.title
-            var description = note.description
+        if (this._notes.count() == 0) {
+            val placeholderView = layoutInflater.inflate(R.layout.notes_placeholder, this._listView, false)
+            this._listView.addView(placeholderView)
+        } else {
+            for (note in this._notes) {
+                val view = layoutInflater.inflate(R.layout.note_item, this._listView, false)
+                view.id = note.id
+                val noteTitle = view.findViewById<TextView>(R.id.note_title)
+                val noteDescription = view.findViewById<TextView>(R.id.note_description)
+                var title: String
 
-            if (description.length > 128) {
-                description = description.substring(0, 128)
-                description += "..."
-            }
-
-            noteDescription.text = description
-
-            view.setOnClickListener {
-                openNote(note)
-            }
-
-            view.setOnLongClickListener {
-                try {
-                    this._notesToDelete.add(view)
-                    true
-                } catch (exception: Exception) {
-                    false
+                if (note.title.length > 44) {
+                    title = note.title.substring(0, 44)
+                    title += "..."
+                } else {
+                    title = note.title
                 }
+
+                noteTitle.text = title
+
+                var description = note.description
+
+                if (description.length > 110) {
+                    description = description.substring(0, 110)
+                    description += "..."
+                }
+
+                noteDescription.text = description
+
+                view.setOnClickListener {
+                    openNote(note)
+                }
+
+                view.isLongClickable = true
+
+                view.setOnLongClickListener {
+                    try {
+                        if (this._notesToDelete.contains(note)) {
+                            this._notesToDelete.remove(note)
+                            it.setBackgroundResource(R.drawable.border)
+                            true
+                        } else {
+                            this._notesToDelete.add(note)
+                            it.setBackgroundResource(R.drawable.border_bold)
+                            true
+                        }
+                    } catch (exception: Exception) {
+                        false
+                    }
+                }
+
+                this._listView.addView(view)
             }
-            this._listView.addView(view)
         }
     }
 
@@ -200,12 +232,25 @@ class MainActivity : AppCompatActivity() {
      * Removes note from note list by id
      * @param id Note id
      */
-    private fun removeNote(id: Long) {
+    private fun removeNote(id: Int) {
         for (i in 0 until this._notes.size) {
             if (this._notes[i].id == id) {
                 this._notes.removeAt(i)
                 break
             }
         }
+    }
+
+    /**
+     * Removes note from note list by id
+     * @param id Note id
+     */
+    private fun removeSelectedNotes() {
+        for (i in 0 until this._notesToDelete.size) {
+            this._notes.remove(this._notesToDelete[i])
+            this._listView.removeView(findViewById<View>(this._notesToDelete[i].id))
+        }
+
+        this.updateNotesOnDisk()
     }
 }

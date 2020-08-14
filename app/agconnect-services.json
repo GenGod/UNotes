@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"1340007000008461896",
+		"product_id":"736430079244601719",
+		"client_id":"429100651943822400",
+		"client_secret":"54A15180587ECE7F0F1648B01BFA321E08E4FCF674962AD29A492BBE0B086882",
+		"app_id":"102739719",
+		"package_name":"es.esy.gengod.ubernotes",
+		"api_key":"CgB6e3x9HajM5kuQKCg/6+gTPo9ns8BLemy66dCMCPOZ1uY84PldVB6cvX9nMxg9OqShKlBIAO98/XREYR+4KzVk"
+	},
+	"configuration_version":"1.0"
+}

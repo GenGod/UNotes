@@ -4,4 +4,6 @@
     <string name="cancel_button_title">Revert</string>
     <string name="remove_button_title">Remove</string>
     <string name="create_new_button_title">Create note</string>
+    <string name="placeholder_title">Notes wasn\'t found</string>
+    <string name="placeholder_body">Please use the "Create" button to add it</string>
 </resources>

@@ -6,10 +6,12 @@
     <color name="inputBackgroundDarkMain">#292A2B</color>
     <color name="colorPrimaryDarkMain">#3F51B5</color>
     <color name="colorAccentMain">#AAEFF8</color>
+    <color name="colorPlaceholder">#919191</color>
 
     <!-- Colors for Red theme -->
     <color name="colorPrimaryRed">#F46303</color>
     <color name="inputBackgroundRed">#FFD8D8</color>
     <color name="colorPrimaryDarkRed">#B53F3F</color>
     <color name="colorAccentRed">#F8B3AA</color>
+    <color name="colorPlaceholderRed">#919191</color>
 </resources>

@@ -35,7 +35,7 @@
                 android:layout_marginRight="5dp"
                 android:text="@string/create_new_button_title"/>
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/activity_main_remove_note_button"
+                android:id="@+id/activity_main_remove_selected_notes_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/remove_button_title"

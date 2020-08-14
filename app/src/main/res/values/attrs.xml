@@ -2,4 +2,6 @@
 <resources>
     <attr name="inputBackground" format="reference"/>
     <attr name="inputBackgroundDark" format="reference"/>
+    <attr name="isNoteSelected" format="reference" />
+    <attr name="placeHolder" format="reference" />
 </resources>

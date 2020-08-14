@@ -5,4 +5,6 @@
     <string name="cancel_button_title">Отменить</string>
     <string name="remove_button_title">Удалить</string>
     <string name="create_new_button_title">Создать</string>
+    <string name="placeholder_title">Заметки не найдены</string>
+    <string name="placeholder_body">Нажмите кнопку "Создать", чтобы добавить заметки</string>
 </resources>

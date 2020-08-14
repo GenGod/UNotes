@@ -18,15 +18,15 @@ class Note {
     var title: String
     var description: String
     var modifiedOn: Date
-    var id: Long = 0
+    var id: Int = 0
 
     companion object {
-        var Id: Long = 0
+        var Id: Int = 0
         /**
          * Generates unique Id for new Note
          * @return generated id
          */
-        fun generateId(): Long {
+        fun generateId(): Int {
             return Id++
         }
     }

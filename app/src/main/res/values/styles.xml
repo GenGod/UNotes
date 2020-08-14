@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkMain</item>
         <item name="colorAccent">@color/colorAccentMain</item>
         <item name="inputBackground">@color/inputBackgroundMain</item>
-        <item name="inputBackgroundDark">@color/inputBackgroundDarkMain</item>
+        <item name="placeHolder">@color/colorPlaceholder</item>
     </style>
 
     <style name="RedTheme" parent="AppTheme">
@@ -16,6 +16,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkRed</item>
         <item name="colorAccent">@color/colorAccentRed</item>
         <item name="inputBackground">@color/inputBackgroundRed</item>
+        <item name="placeHolder">@color/colorPlaceholderRed</item>
     </style>
 
 </resources>
