@@ -9,20 +9,24 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="93"
+            android:layout_weight="90"
             android:orientation="vertical">
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@android:color/transparent"
-                android:background="@android:color/transparent">
+                android:background="@android:color/transparent"
+                android:hint="@string/note_title_placeholder"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorPlaceholder">
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/activity_note_title"
                     android:inputType="text|textMultiLine|textCapSentences"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp"
+                    app:textInputLayoutFocusedRectEnabled="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -31,20 +35,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="100"
-                android:textSize="18sp">
+                android:gravity="start"
+                android:hint="@string/note_body_placeholder"
+                app:hintTextColor="@color/colorPlaceholder"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
             <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/activity_note_description"
-                    android:inputType="text|textMultiLine|textCapSentences"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="start"
-                    android:textSize="18sp"/>
+                    android:inputType="text|textMultiLine|textCapSentences"
+                    android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7">
+            android:layout_height="wrap_content">
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/activity_note_save_button"
                 android:text="@string/save_button_title"

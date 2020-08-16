@@ -67,5 +67,6 @@ class NoteActivity : AppCompatActivity() {
             setResult(3, intent)
             finish()
         }
+        this._noteDescription.requestFocus()
     }
 }

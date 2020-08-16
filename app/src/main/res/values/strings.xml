@@ -6,4 +6,6 @@
     <string name="create_new_button_title">Create note</string>
     <string name="placeholder_title">Notes wasn\'t found</string>
     <string name="placeholder_body">Please use the "Create" button to add it</string>
+    <string name="note_title_placeholder">Title…</string>
+    <string name="note_body_placeholder">Text…</string>
 </resources>

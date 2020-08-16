@@ -7,4 +7,6 @@
     <string name="create_new_button_title">Создать</string>
     <string name="placeholder_title">Заметки не найдены</string>
     <string name="placeholder_body">Нажмите кнопку "Создать", чтобы добавить заметки</string>
+    <string name="note_title_placeholder">Заголовок…</string>
+    <string name="note_body_placeholder">Текст…</string>
 </resources>
