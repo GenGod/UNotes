@@ -9,4 +9,8 @@
     <string name="placeholder_body">Нажмите кнопку "Создать", чтобы добавить заметки</string>
     <string name="note_title_placeholder">Заголовок…</string>
     <string name="note_body_placeholder">Текст…</string>
+    <string name="toast_saved">Сохранено</string>
+    <string name="toast_added">Добавлено</string>
+    <string name="toast_removed">Удалено</string>
+    <string name="toast_note_error">Ошибка обработки заметки</string>
 </resources>

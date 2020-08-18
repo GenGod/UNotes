@@ -12,6 +12,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
+import es.esy.gengod.ubernotes.services.NotesSerializer
+import es.esy.gengod.ubernotes.services.Logger
 import java.io.*
 import java.lang.Exception
 import kotlin.collections.ArrayList
@@ -20,13 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     private var _notes: ArrayList<Note> = ArrayList()
     private var _notesToDelete: ArrayList<Note> = ArrayList()
+    private val toastDuration = Toast.LENGTH_SHORT
     private lateinit var _listView: GridLayout
     private lateinit var _createNewNoteButton: Button
     private lateinit var _removeSelectedNotesButton: Button
 
     companion object {
-        const val FILENAME = "NotesStore.txt"
-        // const val LOGSFILE = "Logs.txt"
+        const val FILENAME = "NotesStore.dat"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,26 +53,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (data != null) {
-            if (resultCode == 0) {
-                if (this.updateNode(Gson().fromJson(data.extras?.get("note_data").toString(), Note::class.java))) {
+        var toastDescription = ""
+        try {
+            if (data != null) {
+                if (resultCode == 0) {
+                    if (this.updateNode(Gson().fromJson(data.extras?.get("note_data").toString(), Note::class.java))) {
+                        toastDescription = resources.getString(R.string.toast_saved)
+                        Runnable {
+                            this.updateNotesOnDisk()
+                        }.run()
+                    }
+                } else if (resultCode == 1) {
+                    this.appendNode(Gson().fromJson(data.extras?.get("note_data").toString(), Note::class.java))
+                    toastDescription = resources.getString(R.string.toast_added)
+                    Runnable {
+                        this.updateNotesOnDisk()
+                    }.run()
+                } else if (resultCode == 3) {
+                    this.removeNote(Gson().fromJson(data.extras?.get("id").toString(), Int::class.java))
+                    toastDescription = resources.getString(R.string.toast_removed)
                     Runnable {
                         this.updateNotesOnDisk()
                     }.run()
                 }
-            } else if (resultCode == 1) {
-                this.appendNode(Gson().fromJson(data.extras?.get("note_data").toString(), Note::class.java))
-                Runnable {
-                    this.updateNotesOnDisk()
-                }.run()
-            } else if (resultCode == 3) {
-                this.removeNote(Gson().fromJson(data.extras?.get("id").toString(), Int::class.java))
-                Runnable {
-                    this.updateNotesOnDisk()
-                }.run()
             }
+        } catch (exception: Exception) {
+            Logger.LogError("onActivityResult", "${exception.message}. ${exception.stackTrace}")
+            toastDescription = resources.getString(R.string.toast_note_error)
+        } finally {
+            if (toastDescription != "") {
+                val toast = Toast.makeText(applicationContext, toastDescription, toastDuration)
+                toast.show()
+            }
+            super.onActivityResult(requestCode, resultCode, data)
         }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onRestart() {
@@ -90,44 +106,51 @@ class MainActivity : AppCompatActivity() {
     /**
      * Reads notes from internal storage
      */
-    private fun initializeNotes() {
+    private fun initializeNotes(): Boolean {
         val errorTag = "initializeNotes Error"
         try {
             val inFile = applicationContext.openFileInput(FILENAME)
             inFile.use {
                 val serializedString = String(it.readBytes())
                 Log.w("initializeNotes()", serializedString)
-                this._notes = deserializeNotes(serializedString)
+                this._notes = NotesSerializer.deserializeNotes(serializedString)
             }
+            return true
         } catch (exception: FileNotFoundException) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         } catch (exception: IOException) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         } catch (exception: Exception) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         }
     }
 
     /**
      * Updates all notes in internal storage
      */
-    private fun updateNotesOnDisk() {
+    private fun updateNotesOnDisk(): Boolean {
         val errorTag = "updateNotesOnDisk Error"
         try {
             val file = applicationContext.openFileOutput(FILENAME, Context.MODE_PRIVATE)
-            val serializedString = serializeNotes(this._notes)
-            Log.w("updateNotesOnDisk", serializedString)
+            val serializedString = NotesSerializer.serializeNotes(this._notes)
             file.use { outFile ->
                 outFile.bufferedWriter().use {
                     it.write(serializedString)
                 }
             }
+            return true
         } catch (exception: FileNotFoundException) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         } catch (exception: IOException) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         } catch (exception: Exception) {
-            Log.e(errorTag, exception.message)
+            Logger.LogError(errorTag, exception.message!!)
+            return false
         }
     }
 
@@ -209,15 +232,14 @@ class MainActivity : AppCompatActivity() {
      * @return Update status
      */
     private fun updateNode(noteToUpdate: Note): Boolean {
-        var isUpdated = false
         for (note in this._notes) {
             if (note.id == noteToUpdate.id) {
                 note.assign(noteToUpdate)
-                isUpdated = true
+                return true
             }
         }
 
-        return isUpdated
+        return false
     }
 
     /**
@@ -242,8 +264,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Removes note from note list by id
-     * @param id Note id
+     * Removes notes from note list
      */
     private fun removeSelectedNotes() {
         for (i in 0 until this._notesToDelete.size) {
@@ -251,6 +272,9 @@ class MainActivity : AppCompatActivity() {
             this._listView.removeView(findViewById<View>(this._notesToDelete[i].id))
         }
 
-        this.updateNotesOnDisk()
+        if (this.updateNotesOnDisk()) {
+            val toast = Toast.makeText(applicationContext, resources.getString(R.string.toast_removed), toastDuration)
+            toast.show()
+        }
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UberNotes</string>
+    <string name="app_name">UNotes</string>
     <string name="save_button_title">Save</string>
     <string name="cancel_button_title">Revert</string>
     <string name="remove_button_title">Remove</string>
@@ -8,4 +8,8 @@
     <string name="placeholder_body">Please use the "Create" button to add it</string>
     <string name="note_title_placeholder">Title…</string>
     <string name="note_body_placeholder">Text…</string>
+    <string name="toast_saved">Saved</string>
+    <string name="toast_added">Added</string>
+    <string name="toast_removed">Removed</string>
+    <string name="toast_note_error">Error while note processing</string>
 </resources>
