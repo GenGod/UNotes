@@ -1,4 +1,4 @@
-package es.esy.gengod.ubernotes
+package es.esy.gengod.unotes
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("es.esy.gengod.ubernotes", appContext.packageName)
+        assertEquals("es.esy.gengod.unotes", appContext.packageName)
     }
 }

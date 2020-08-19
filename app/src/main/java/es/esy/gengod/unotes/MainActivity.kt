@@ -2,7 +2,7 @@
  * @author Bogdan Vetrenko
  */
 
-package es.esy.gengod.ubernotes
+package es.esy.gengod.unotes
 
 import android.content.Context
 import android.content.Intent
@@ -12,8 +12,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import es.esy.gengod.ubernotes.services.NotesSerializer
-import es.esy.gengod.ubernotes.services.Logger
+import es.esy.gengod.unotes.services.NotesSerializer
+import es.esy.gengod.unotes.services.Logger
 import java.io.*
 import java.lang.Exception
 import kotlin.collections.ArrayList
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } catch (exception: Exception) {
-            Logger.LogError("onActivityResult", "${exception.message}. ${exception.stackTrace}")
+            Logger.logError("onActivityResult", "${exception.message}. ${exception.stackTrace}")
             toastDescription = resources.getString(R.string.toast_note_error)
         } finally {
             if (toastDescription != "") {
@@ -117,13 +117,13 @@ class MainActivity : AppCompatActivity() {
             }
             return true
         } catch (exception: FileNotFoundException) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         } catch (exception: IOException) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         } catch (exception: Exception) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         }
     }
@@ -143,13 +143,13 @@ class MainActivity : AppCompatActivity() {
             }
             return true
         } catch (exception: FileNotFoundException) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         } catch (exception: IOException) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         } catch (exception: Exception) {
-            Logger.LogError(errorTag, exception.message!!)
+            Logger.logError(errorTag, exception.message!!)
             return false
         }
     }

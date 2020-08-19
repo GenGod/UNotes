@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="es.esy.gengod.ubernotes">
+          package="es.esy.gengod.unotes">
 
     <application
             android:allowBackup="true"
@@ -10,9 +10,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".NoteActivity" android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity android:name="es.esy.gengod.unotes.NoteActivity" android:windowSoftInputMode="stateVisible|adjustResize">
         </activity>
-        <activity android:name=".MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
+        <activity android:name="es.esy.gengod.unotes.MainActivity" android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

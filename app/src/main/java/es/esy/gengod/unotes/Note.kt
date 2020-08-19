@@ -2,7 +2,7 @@
  * @author Bogdan Vetrenko
  */
 
-package es.esy.gengod.ubernotes
+package es.esy.gengod.unotes
 
 import java.util.*
 
@@ -69,7 +69,7 @@ class Note {
     }
 
     override fun hashCode(): Int {
-        var hash = id.toInt()
+        var hash = id
         for (i in title.toByteArray()) {
             hash += i
         }

@@ -2,7 +2,7 @@
  * @author Bogdan Vetrenko
  */
 
-package es.esy.gengod.ubernotes
+package es.esy.gengod.unotes
 
 import android.os.Bundle
 import android.widget.Button

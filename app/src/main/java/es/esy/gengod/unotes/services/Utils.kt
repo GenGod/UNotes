@@ -2,11 +2,11 @@
  * @author Bogdan Vetrenko
  */
 
-package es.esy.gengod.ubernotes.services
+package es.esy.gengod.unotes.services
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import es.esy.gengod.ubernotes.Note
+import es.esy.gengod.unotes.Note
 
 class NotesSerializer {
     companion object {

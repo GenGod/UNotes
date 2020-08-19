@@ -1,8 +1,8 @@
-package es.esy.gengod.ubernotes
+package es.esy.gengod.unotes
 
 import org.junit.Test
 import com.google.common.truth.Truth.assertThat
-import es.esy.gengod.ubernotes.services.NotesSerializer
+import es.esy.gengod.unotes.services.NotesSerializer
 import java.util.*
 
 class UtilsTest {

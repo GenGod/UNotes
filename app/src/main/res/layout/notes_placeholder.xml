@@ -7,7 +7,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:paddingStart="0dp"
             android:paddingTop="150dp"
             android:textColor="?placeHolder"
             android:text="@string/placeholder_title" />
@@ -15,7 +14,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:paddingStart="0dp"
             android:textColor="?placeHolder"
             android:text="@string/placeholder_body" />
 </LinearLayout>
