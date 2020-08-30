@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gh_page/node_modules/.cache/gh-pages/github.com!GenGod!UNotes.git" vcs="Git" />
   </component>
 </project>
