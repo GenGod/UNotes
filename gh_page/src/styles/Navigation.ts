@@ -16,23 +16,29 @@ export const NavigationUl = styled.ul`
 `;
 
 export const NavigationLi = styled.li`
-  margin-right: 1em;
+  margin-right: 3em;
+  font-weight: 700;
+  font-size: larger;
 `;
 
 export const NavigationLink = styled(Link)`
   text-decoration: none;
   &:focus,
-  &:hover,
   &:visited,
   &:link,
   &:active {
     text-decoration: none;
   }
   color: #eee;
+
+  &:hover {
+    text-decoration: none;
+    color: #aaa;
+  }
 `;
 
 export const Logo = styled.img`
-  background-image: url(images/logo.png);
-  width: 4em;
-  height: 4em;
+  width: 2em;
+  height: 2em;
+  margin-top: -0.2em;
 `;

@@ -102,7 +102,8 @@ const Privacy: React.FunctionComponent = (): JSX.Element => {
           page. This policy is effective as of 2020-08-14 Contact Us If you have
           any questions or suggestions about my Privacy Policy, do not hesitate
           to contact me at{' '}
-          <a href="mailto:gengodtest@gmail.com">gengodtest@gmail.com</a>.
+          <a href="mailto:gengodoriginal@gmail.com">gengodoriginal@gmail.com</a>
+          .
         </p>
       </MainDiv>
     </Root>

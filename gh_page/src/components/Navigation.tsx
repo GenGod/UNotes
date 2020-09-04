@@ -12,13 +12,19 @@ const Navigation = (): JSX.Element => {
     <NavigationHeader>
       <NavigationUl>
         <NavigationLi>
-          <Logo />
+          <NavigationLink title="Home" to="/">
+            <Logo src="images/logo.png" />
+          </NavigationLink>
         </NavigationLi>
         <NavigationLi>
-          <NavigationLink to="/privacy">Privacy</NavigationLink>
+          <NavigationLink title="Privacy" to="/privacy">
+            Privacy
+          </NavigationLink>
         </NavigationLi>
         <NavigationLi>
-          <NavigationLink to="/">Home</NavigationLink>
+          <NavigationLink title="Home" to="/">
+            Home
+          </NavigationLink>
         </NavigationLi>
       </NavigationUl>
     </NavigationHeader>

@@ -12,7 +12,6 @@ module.exports = (env, args) => {
             path: path.join(__dirname, '/dist'),
             filename: "bundle.js",
         },
-        // Enable sourcemaps for debugging webpack's output.
         devtool: mode === "development" ? "source-map" : false,
         plugins: [
             new CleanWebpackPlugin(),
@@ -47,7 +46,6 @@ module.exports = (env, args) => {
                 },
             ]
         },
-        // Default max size is 244000.
         performance: {
             maxEntrypointSize: 244000,
             maxAssetSize: 244000,
