@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 
 import Privacy from './Privacy';
+import Home from './Home';
+import Navigation from './Navigation';
 
 const MainRouter: React.FunctionComponent = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Privacy />
-        </Route>
-      </Switch>
+    <Router basename="/">
+      <Navigation />
+      <Route exact path="/" component={Home} />
+      <Route path="/privacy" component={Privacy} />
     </Router>
   );
 };

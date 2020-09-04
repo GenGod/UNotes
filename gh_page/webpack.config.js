@@ -1,4 +1,5 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
@@ -39,7 +40,6 @@ module.exports = (env, args) => {
                     test: /\.css$/i,
                     use: ["style-loader", "css-loader"],
                 },
-                // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
                 {
                     enforce: "pre",
                     test: /\.js$/,
@@ -55,8 +55,13 @@ module.exports = (env, args) => {
         plugins: [
             new HtmlWebpackPlugin({
               template: './public/index.html',
-              favicon: './src/favicon.ico'
-            })
+              favicon: './src/favicon.ico',
+
+            }),
+            new CopyWebpackPlugin({
+            patterns:[
+                {from:'src/images',to:'images'}
+            ]}),
         ]
     };
 

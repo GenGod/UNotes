@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Privacy from './components/Privacy';
+import MainRouter from './components/MainRouter';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Privacy />
+    <MainRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );
